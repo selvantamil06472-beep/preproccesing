@@ -1,0 +1,177 @@
+import tkinter as tk
+from tkinter import scrolledtext
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import nltk
+import re
+
+from faqs import faqs
+
+
+# -------------------------------
+# NLP PREPROCESSING
+# -------------------------------
+def preprocess_text(text):
+    text = text.lower()
+    text = re.sub(r"[^a-z0-9\s]", "", text)
+
+    # NLTK tokenization
+    words = nltk.wordpunct_tokenize(text)
+
+    return " ".join(words)
+
+
+# -------------------------------
+# FAQ DATA
+# -------------------------------
+questions = [
+    preprocess_text(faq["question"])
+    for faq in faqs
+]
+
+answers = [
+    faq["answer"]
+    for faq in faqs
+]
+
+
+# -------------------------------
+# TF-IDF MODEL
+# -------------------------------
+vectorizer = TfidfVectorizer(
+    stop_words="english"
+)
+
+faq_vectors = vectorizer.fit_transform(questions)
+
+
+# -------------------------------
+# FIND BEST ANSWER
+# -------------------------------
+def get_answer(user_question):
+
+    cleaned_question = preprocess_text(user_question)
+
+    user_vector = vectorizer.transform(
+        [cleaned_question]
+    )
+
+    similarity_scores = cosine_similarity(
+        user_vector,
+        faq_vectors
+    )[0]
+
+    best_index = similarity_scores.argmax()
+    best_score = similarity_scores[best_index]
+
+    if best_score < 0.15:
+        return "Sorry, I couldn't find a suitable answer. Please try asking your question in another way."
+
+    return answers[best_index]
+
+
+# -------------------------------
+# SEND MESSAGE
+# -------------------------------
+def send_message():
+
+    user_question = entry.get().strip()
+
+    if not user_question:
+        return
+
+    chat_area.insert(
+        tk.END,
+        "You: " + user_question + "\n"
+    )
+
+    answer = get_answer(user_question)
+
+    chat_area.insert(
+        tk.END,
+        "Bot: " + answer + "\n\n"
+    )
+
+    entry.delete(0, tk.END)
+    chat_area.see(tk.END)
+
+
+# -------------------------------
+# MAIN WINDOW
+# -------------------------------
+window = tk.Tk()
+
+window.title("FAQ Chatbot")
+
+window.geometry("650x550")
+
+
+# Title
+title = tk.Label(
+    window,
+    text="🤖 FAQ CHATBOT",
+    font=("Arial", 22, "bold")
+)
+
+title.pack(pady=15)
+
+
+# Chat area
+chat_area = scrolledtext.ScrolledText(
+    window,
+    wrap=tk.WORD,
+    width=70,
+    height=20,
+    font=("Arial", 11)
+)
+
+chat_area.pack(
+    padx=15,
+    pady=10
+)
+
+
+# Welcome message
+chat_area.insert(
+    tk.END,
+    "Bot: Hello! 👋 Ask me anything about this FAQ system.\n\n"
+)
+
+
+# Input box
+entry = tk.Entry(
+    window,
+    width=50,
+    font=("Arial", 12)
+)
+
+entry.pack(
+    side=tk.LEFT,
+    padx=(25, 5),
+    pady=15
+)
+
+
+# Send button
+send_button = tk.Button(
+    window,
+    text="Send",
+    command=send_message,
+    font=("Arial", 11, "bold")
+)
+
+send_button.pack(
+    side=tk.LEFT,
+    pady=15
+)
+
+
+# Enter key
+entry.bind(
+    "<Return>",
+    lambda event: send_message()
+)
+
+
+# Start application
+window.mainloop()

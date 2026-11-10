@@ -1,0 +1,153 @@
+faqs = [
+
+    {
+        "question": "What is this chatbot?",
+        "answer": "This is an FAQ chatbot that answers common questions using Natural Language Processing."
+    },
+
+    {
+        "question": "What is the purpose of this chatbot?",
+        "answer": "The purpose of this chatbot is to provide quick and automatic answers to frequently asked questions."
+    },
+
+    {
+        "question": "How does the chatbot work?",
+        "answer": "The chatbot compares the user's question with stored FAQ questions and returns the most similar answer."
+    },
+
+    {
+        "question": "What technology is used?",
+        "answer": "This project uses Python, NLP, NLTK, TF-IDF, cosine similarity, and Tkinter."
+    },
+
+    {
+        "question": "What is NLP?",
+        "answer": "NLP stands for Natural Language Processing. It helps computers understand and process human language."
+    },
+
+    {
+        "question": "What is Natural Language Processing?",
+        "answer": "Natural Language Processing is a field of Artificial Intelligence that enables computers to work with human language."
+    },
+
+    {
+        "question": "What is TF-IDF?",
+        "answer": "TF-IDF is a text processing technique used to measure the importance of words in documents."
+    },
+
+    {
+        "question": "What is cosine similarity?",
+        "answer": "Cosine similarity measures how similar two text documents are based on their word representations."
+    },
+
+    {
+        "question": "Why is TF-IDF used?",
+        "answer": "TF-IDF is used to convert text into numerical vectors so that the chatbot can compare questions."
+    },
+
+    {
+        "question": "Why is cosine similarity used?",
+        "answer": "Cosine similarity is used to find which stored FAQ question is most similar to the user's question."
+    },
+
+    {
+        "question": "Can I ask questions in different ways?",
+        "answer": "Yes. The chatbot can find similar questions even when the wording is slightly different."
+    },
+
+    {
+        "question": "Can the chatbot understand similar questions?",
+        "answer": "Yes. The chatbot uses text similarity to identify questions with similar meanings."
+    },
+
+    {
+        "question": "What happens when a question matches an FAQ?",
+        "answer": "The chatbot calculates similarity and returns the answer belonging to the most similar FAQ."
+    },
+
+    {
+        "question": "What happens if the chatbot does not understand?",
+        "answer": "If the similarity score is too low, the chatbot asks the user to try asking the question in another way."
+    },
+
+    {
+        "question": "Can the FAQ data be changed?",
+        "answer": "Yes. You can add, remove, or modify questions and answers in the faqs.py file."
+    },
+
+    {
+        "question": "Can I add new questions?",
+        "answer": "Yes. New FAQ questions and answers can be added to the faqs.py file."
+    },
+
+    {
+        "question": "Can I remove an FAQ?",
+        "answer": "Yes. Any unwanted FAQ question and answer can be removed from the faqs.py file."
+    },
+
+    {
+        "question": "Which programming language is used?",
+        "answer": "Python is the main programming language used to develop this chatbot."
+    },
+
+    {
+        "question": "Which NLP library is used?",
+        "answer": "NLTK is used for basic Natural Language Processing and text tokenization."
+    },
+
+    {
+        "question": "Which machine learning technique is used?",
+        "answer": "TF-IDF vectorization and cosine similarity are used for text matching."
+    },
+
+    {
+        "question": "What is NLTK?",
+        "answer": "NLTK stands for Natural Language Toolkit. It is a Python library used for Natural Language Processing."
+    },
+
+    {
+        "question": "What is text preprocessing?",
+        "answer": "Text preprocessing cleans and prepares user input before it is used for text comparison."
+    },
+
+    {
+        "question": "Why is text preprocessing important?",
+        "answer": "Text preprocessing helps reduce unnecessary differences in text and improves question matching."
+    },
+
+    {
+        "question": "Does the chatbot require internet?",
+        "answer": "No. This chatbot can run locally on a computer without an internet connection."
+    },
+
+    {
+        "question": "Is this chatbot available online?",
+        "answer": "The chatbot currently runs locally as a desktop application. It can be deployed online later."
+    },
+
+    {
+        "question": "How do I start the chatbot?",
+        "answer": "Open the project folder and run the command: py -3.11 app.py"
+    },
+
+    {
+        "question": "What is the user interface used?",
+        "answer": "Tkinter is used to create the graphical user interface for the chatbot."
+    },
+
+    {
+        "question": "Why is Tkinter used?",
+        "answer": "Tkinter provides a simple Python-based graphical interface for interacting with the chatbot."
+    },
+
+    {
+        "question": "What are the main features of this chatbot?",
+        "answer": "The main features include FAQ matching, NLP preprocessing, TF-IDF vectorization, cosine similarity, and a graphical chat interface."
+    },
+
+    {
+        "question": "What are the benefits of this chatbot?",
+        "answer": "The chatbot provides quick answers, reduces manual effort, supports similar questions, and can be easily updated with new FAQs."
+    }
+
+]
